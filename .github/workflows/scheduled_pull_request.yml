@@ -20,3 +20,4 @@ jobs:
         destination_branch: "pr-test-2"
         pr_title: "Automated Staging Deploy"
         pr_label: "auto-pr"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
