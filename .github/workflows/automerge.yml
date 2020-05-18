@@ -13,8 +13,8 @@ jobs:
         id: tests 
         uses: WyriHaximus/github-action-wait-for-status@0.1.0
         with:
+          checkInterval: 60
           ignoreActions: automerge
-          checkInterval: 30
       - name: Merge pull request 
         if: steps.tests.outputs.status == 'success'
         uses: pascalgn/automerge-action@v0.8.3
