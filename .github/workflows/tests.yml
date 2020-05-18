@@ -8,4 +8,4 @@ jobs:
     steps:
     - name: Script
       run: sleep 15s 
-    - run: exit 1
+    - run: exit 0
