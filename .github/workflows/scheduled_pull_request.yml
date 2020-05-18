@@ -1,0 +1,20 @@
+name: scheduled_pull_request
+
+on:
+  schedule:
+    - cron: '*/3 * * * *'
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: message
+      run: echo "running auto pr"
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with: 
+        source_branch: "pr-test-1"
+        destination_branch: "pr-test-2"
+        pr_title: "Automated Staging Deploy"
+        pr_label: "auto-pr"
