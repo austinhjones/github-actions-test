@@ -7,6 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Script
-      run: |
-        sleep 30s 
-        exit 0
+      run: sleep 30s 
