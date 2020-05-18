@@ -20,4 +20,4 @@ jobs:
         destination_branch: "master"
         pr_title: "Automated Staging Deploy"
         pr_label: "auto-pr"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
