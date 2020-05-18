@@ -1,9 +1,10 @@
 name: automerge 
 
 on: 
-  pull_request:
+  check_suite:
     branches:
       - master
+    types: [completed]
 
 jobs: 
   automerge:
