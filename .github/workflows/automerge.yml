@@ -13,7 +13,7 @@ jobs:
         uses: fountainhead/action-wait-for-check@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: tests
+          checkName: test_1
           ref: ${{ github.pull_request.head.sha }}
           intervalSeconds: 30
           timeoutSeconds: 120 
