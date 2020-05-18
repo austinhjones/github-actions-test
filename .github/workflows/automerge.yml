@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for status checks
-        id: tests 
-        uses: WyriHaximus/github-action-wait-for-status@0.1.0
-        with:
-          checkInterval: 60
-          ignoreActions: automerge
+        uses: jitterbit/await-check-suites@v1
+      # - name: Wait for status checks
+      #   id: tests 
+      #   uses: WyriHaximus/github-action-wait-for-status@0.1.0
+      #   with:
+      #     checkInterval: 60
+      #     ignoreActions: automerge
       - name: Merge pull request 
-        if: steps.tests.outputs.status == 'success'
+        # if: steps.tests.outputs.status == 'success'
+        if: '!failure()'
         uses: pascalgn/automerge-action@v0.8.3
         env: 
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -24,5 +27,6 @@ jobs:
           MERGE_REMOVE_LABELS: "automerge"
           MERGE_RETRIES: 1
       - name: Send failure message
-        if: steps.tests.outputs.status == 'failure'
+        # if: steps.tests.outputs.status == 'failure'
+        if: failure()
         run: echo 'failure'
