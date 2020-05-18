@@ -16,7 +16,7 @@ jobs:
 
         uses: jitterbit/await-check-suites@v1
         with: 
-          timeoutSeconds: 60
+          timeoutSeconds: 120
           intervalSeconds: 10
 
       # - name: Wait for status checks
