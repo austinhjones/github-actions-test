@@ -1,33 +1,29 @@
-name: automerge 
+# name: automerge 
 
-on: 
-  pull_request:
-    branches:
-      - master
+# on: 
+#   pull_request:
+#     branches:
+#       - master
 
-jobs: 
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wait for checks
-        uses: jitterbit/await-check-suites@v1
-        # with: 
-          # ref: ${{ github.event.pull_request.head.sha }}
-      # - name: Wait for checks
-      #   uses: fountainhead/action-wait-for-check@v1.0.0
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     checkName: tests 
-      #     ref: ${{ github.event.pull_request.head.sha }}
-      #     intervalSeconds: 40 
-      #     timeoutSeconds: 120 
-      # - name: Merge pull request 
-      #   uses: pascalgn/automerge-action@v0.8.3
-      #   env: 
-      #     GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      #     MERGE_LABELS: "automerge"
-      #     MERGE_REMOVE_LABELS: "automerge"
-      #     MERGE_RETRIES: 1
-      # - name: Send failure message
-      #   if: failure()
-      #   run: echo 'failure'
+# jobs: 
+#   automerge:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Wait for checks
+#         uses: fountainhead/action-wait-for-check@v1.0.0
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           checkName: tests 
+#           ref: ${{ github.event.pull_request.head.sha }}
+#           intervalSeconds: 30 
+#           timeoutSeconds: 120 
+#       - name: Merge pull request 
+#         uses: pascalgn/automerge-action@v0.8.3
+#         env: 
+#           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+#           MERGE_LABELS: "bot/merge"
+#           MERGE_REMOVE_LABELS: "bot/merge"
+#           MERGE_RETRIES: 1
+#       - name: Send failure message
+#         if: failure()
+#         run: echo 'failure'

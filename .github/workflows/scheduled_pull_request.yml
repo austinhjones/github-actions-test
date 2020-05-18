@@ -15,5 +15,5 @@ jobs:
         source_branch: "pr-test-1"
         destination_branch: "master"
         pr_title: "Automated Staging Deploy"
-        pr_label: "automerge"
+        pr_label: "bot/merge"
         github_token: ${{ secrets.GITHUB_TOKEN }}
