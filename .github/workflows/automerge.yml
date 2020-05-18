@@ -14,6 +14,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: tests
+          ref: github.pull_request.head.sha
           intervalSeconds: 30
           timeoutSeconds: 120 
       # - name: Merge pull request 
