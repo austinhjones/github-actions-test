@@ -10,7 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for status checks
+        # id: tests 
+        # uses: fountainhead/action-wait-for-check@v1.0.0
+        # with: 
+
         uses: jitterbit/await-check-suites@v1
+        with: 
+          timeoutSeconds: 60
+          intervalSeconds: 10
+
       # - name: Wait for status checks
       #   id: tests 
       #   uses: WyriHaximus/github-action-wait-for-status@0.1.0
