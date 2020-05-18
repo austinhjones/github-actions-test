@@ -25,7 +25,7 @@ jobs:
                 "text": 
                   { 
                     "type":"mrkdwn",
-                    "text":":x:  Khepri [staging] pre-deploy puppeteer suite failed @ajones :x:"
+                    "text":":x:  Khepri staging deploy puppeteer suite failed @ajones  :x:"
                   }
               },
               {
