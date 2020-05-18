@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   tests:
-    if: github.base_ref == 'master'
+    if: github.base_ref != 'master'
     runs-on: ubuntu-latest
     steps:
     - name: Script
