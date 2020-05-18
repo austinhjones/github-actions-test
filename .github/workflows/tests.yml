@@ -11,7 +11,7 @@ jobs:
       - run: exit 1
   message:
     needs: tests
-    if: github.base_ref == 'master' && failure()
+    if: github.base_ref == 'master' && !failure()
     runs-on: ubuntu-latest
     steps:
       - run: echo failure! 
