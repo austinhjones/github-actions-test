@@ -9,9 +9,32 @@ jobs:
       - name: Script
         run: sleep 15s 
       - run: exit 1
-  message:
+
+  slack-message-on-failure: # notifications for automated deploys
     needs: tests
-    if: github.base_ref == 'master' && !failure()
+    if: github.base_ref == 'master' && failure()
     runs-on: ubuntu-latest
     steps:
-      - run: echo failure! 
+      - uses: Ilshidur/action-slack@efb86f
+        env: 
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CUSTOM_PAYLOAD: '{
+            "blocks":[
+              {
+                "type":"section",
+                "text": 
+                  { 
+                    "type":"mrkdwn",
+                    "text":":x:  Khepri [staging] pre-deploy puppeteer suite failed @ajones :x:"
+                  }
+              },
+              {
+                "type":"context",
+                "elements":[{
+                  "type":"mrkdwn",
+                  "text":"Check failing tests <https://github.com/chanzuckerberg/khepri/commit/${{ github.sha }}/checks|here>."
+                }]
+              }
+            ]
+          }'
+       
