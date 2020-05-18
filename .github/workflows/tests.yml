@@ -8,4 +8,4 @@ jobs:
     steps:
     - name: Script
       run: sleep 15s 
-    - run: echo ${github.base_ref} 
+    - run: echo "${{ github.base_ref }}"
