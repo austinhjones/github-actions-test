@@ -4,9 +4,13 @@ on: [pull_request]
 
 jobs:
   tests:
-    if: github.base_ref != 'master'
     runs-on: ubuntu-latest
     steps:
-    - name: Script
-      run: sleep 15s 
-    - run: echo "${{ github.base_ref }}"
+      - name: Script
+        run: sleep 15s 
+      - run: exit 1
+  message:
+    if: github.base_ref == 'master' && failure()
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo failure! 
