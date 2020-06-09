@@ -9,11 +9,11 @@ jobs:
       - name: Set environment variable
         run: |
           if [[ ${{ github.ref }} == "refs/heads/release" ]]; then
-            echo '::set-env name=ENV::staging'
+            echo '::set-env name=environment::staging'
           else
-            echo '::set-env name=ENV::prod'
+            echo '::set-env name=environment::prod'
           fi
-          echo "${ENV}"
+          echo "${{ jobs.tests.env.environment }}"
       - uses: Ilshidur/action-slack@efb86f
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
