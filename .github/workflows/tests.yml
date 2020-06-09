@@ -23,7 +23,7 @@ jobs:
                 "text": 
                   { 
                     "type":"mrkdwn",
-                    "text":":x:  Khepri ${ENV} deploy puppeteer suite failure @aps-oncall  :x:"
+                    "text":":x:  Khepri ${{ ENV }} deploy puppeteer suite failure @aps-oncall  :x:"
                   }
               },
               {
