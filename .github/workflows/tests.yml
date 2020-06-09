@@ -9,11 +9,10 @@ jobs:
       - name: Set environment variable
         run: |
           if [[ ${{ github.ref }} == "refs/heads/release" ]]; then
-            echo '::set-env name=environment::staging'
+            echo '::set-env name=env::staging'
           else
-            echo '::set-env name=environment::prod'
+            echo '::set-env name=env::prod'
           fi
-          echo "${{ jobs.tests.env.environment }}"
       - uses: Ilshidur/action-slack@efb86f
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -24,7 +23,7 @@ jobs:
                 "text": 
                   { 
                     "type":"mrkdwn",
-                    "text":":x:  Khepri $ENV deploy puppeteer suite failure @aps-oncall  :x:"
+                    "text":":x:  Khepri {{ env }} deploy puppeteer suite failure @aps-oncall  :x:"
                   }
               },
               {
