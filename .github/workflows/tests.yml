@@ -13,6 +13,7 @@ jobs:
           else
             echo '::set-env name=ENV::prod'
           fi
+          echo "${ENV}"
       - uses: Ilshidur/action-slack@efb86f
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
