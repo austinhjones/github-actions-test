@@ -6,6 +6,32 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Script
-      run: sleep 15s 
-    - run: exit 0
+      - name: Set environment variable
+        run: |
+          if [[ ${{ github.ref }} == "refs/heads/release" ]]; then
+            echo '::set-env name=ENV::staging'
+          else
+            echo '::set-env name=ENV::prod'
+          fi
+      - uses: Ilshidur/action-slack@efb86f
+        env: 
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CUSTOM_PAYLOAD: '{
+            "blocks":[
+              {
+                "type":"section",
+                "text": 
+                  { 
+                    "type":"mrkdwn",
+                    "text":":x:  Khepri ${ENV} deploy puppeteer suite failure @aps-oncall  :x:"
+                  }
+              },
+              {
+                "type":"context",
+                "elements":[{
+                  "type":"mrkdwn",
+                  "text":"Check failing tests <https://github.com/chanzuckerberg/khepri/commit/${{ github.sha }}/checks|here>."
+                }]
+              }
+            ]
+          }'
