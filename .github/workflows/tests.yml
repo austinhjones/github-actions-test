@@ -1,37 +1,13 @@
 name: tests
 
-on: [pull_request]
+on: 
+  schedule: 
+    - cron: '*/2 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Set environment variable
-        run: |
-          if [[ ${{ github.ref }} == "refs/heads/release" ]]; then
-            echo '::set-env name=env::staging'
-          else
-            echo '::set-env name=env::prod'
-          fi
-      - uses: Ilshidur/action-slack@efb86f
-        env: 
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CUSTOM_PAYLOAD: '{
-            "blocks":[
-              {
-                "type":"section",
-                "text": 
-                  { 
-                    "type":"mrkdwn",
-                    "text":":x:  Khepri {{ env }} deploy puppeteer suite failure @aps-oncall  :x:"
-                  }
-              },
-              {
-                "type":"context",
-                "elements":[{
-                  "type":"mrkdwn",
-                  "text":"Check failing tests <https://github.com/chanzuckerberg/khepri/commit/${{ github.sha }}/checks|here>."
-                }]
-              }
-            ]
-          }'
+      - name: Test
+      - run: echo 'hi'
