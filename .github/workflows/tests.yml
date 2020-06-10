@@ -1,11 +1,13 @@
 name: tests
 
-on: [pull_request]
+on: 
+  schedule: 
+    - cron: '*/2 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Script
-      run: sleep 15s 
-    - run: exit 0
+      - name: Test
+      - run: echo 'hi'
