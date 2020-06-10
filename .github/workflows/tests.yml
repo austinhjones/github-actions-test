@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-      - run: echo 'hi'
+        run: echo 'hi'
